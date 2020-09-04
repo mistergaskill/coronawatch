@@ -1,0 +1,15 @@
+version: "3"
+services:
+  # grafana:
+  #   image: grafana/grafana:7.1.5
+  #   ports:
+  #     - 3000:3000
+  postgres:
+    image: postgres:9.4
+    env_file:
+      - postgres.env
+    volumes:
+      - ./data/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./data:/data
+    ports:
+      - 5432:5432
