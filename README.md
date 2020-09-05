@@ -4,6 +4,7 @@
 
 # Running
 `minikube start --driver=<driver_name>`
+172.17.0.1
 
 # How to Connect to the Database
 >Config found in docker-compose.yml and postgres.env
