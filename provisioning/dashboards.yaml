@@ -1,0 +1,4 @@
+providers:
+- name: dashboards
+  options:
+    path: /var/lib/grafana/dashboards

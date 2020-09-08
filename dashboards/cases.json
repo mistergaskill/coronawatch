@@ -16,59 +16,75 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1599264680150,
+  "iteration": 1599510110417,
   "links": [],
   "panels": [
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {},
+          "mappings": [],
+          "max": 10,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 4
+              },
+              {
+                "color": "purple",
+                "value": 7
+              }
+            ]
+          },
+          "unit": "none"
         },
         "overrides": []
       },
-      "fill": 1,
-      "fillGradient": 0,
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 6,
+        "w": 6,
         "x": 0,
         "y": 0
       },
-      "hiddenSeries": false,
-      "id": 2,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
+      "id": 16,
+      "options": {
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
       },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
       "pluginVersion": "7.1.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
+      "repeat": "county",
+      "scopedVars": {
+        "county": {
+          "selected": true,
+          "text": "Contra Costa County, CA",
+          "value": "Contra Costa County, CA"
+        }
+      },
       "targets": [
         {
           "format": "time_series",
           "group": [],
           "metricColumn": "county",
-          "rawQuery": false,
-          "rawSql": "SELECT\n  collected AS \"time\",\n  county AS metric,\n  weekly_cases_per_100k\nFROM stats\nWHERE\n  $__timeFilter(collected) AND\n  county IN ($county)\nORDER BY 1,2",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  collected AS \"time\",\n  county AS metric,\n  weekly_cases_per_100k / 7\nFROM stats\nWHERE\n  $__timeFilter(collected) AND\n  county IN ($county)\nORDER BY 1,2",
           "refId": "A",
           "select": [
             [
@@ -96,7 +112,424 @@
           ]
         }
       ],
-      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$county",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "max": 10,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 4
+              },
+              {
+                "color": "purple",
+                "value": 7
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 17,
+      "options": {
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.1.5",
+      "repeat": null,
+      "repeatIteration": 1599510110417,
+      "repeatPanelId": 16,
+      "scopedVars": {
+        "county": {
+          "selected": true,
+          "text": "King County, WA",
+          "value": "King County, WA"
+        }
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "county",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  collected AS \"time\",\n  county AS metric,\n  weekly_cases_per_100k / 7\nFROM stats\nWHERE\n  $__timeFilter(collected) AND\n  county IN ($county)\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": ["weekly_cases_per_100k"],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "stats",
+          "timeColumn": "collected",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": ["county", "IN", "($county)"],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$county",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "max": 10,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 4
+              },
+              {
+                "color": "purple",
+                "value": 7
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 18,
+      "options": {
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.1.5",
+      "repeat": null,
+      "repeatIteration": 1599510110417,
+      "repeatPanelId": 16,
+      "scopedVars": {
+        "county": {
+          "selected": true,
+          "text": "Orange County, CA",
+          "value": "Orange County, CA"
+        }
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "county",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  collected AS \"time\",\n  county AS metric,\n  weekly_cases_per_100k / 7\nFROM stats\nWHERE\n  $__timeFilter(collected) AND\n  county IN ($county)\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": ["weekly_cases_per_100k"],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "stats",
+          "timeColumn": "collected",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": ["county", "IN", "($county)"],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$county",
+      "type": "gauge"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "max": 10,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "yellow",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 1
+              },
+              {
+                "color": "red",
+                "value": 4
+              },
+              {
+                "color": "purple",
+                "value": 7
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 19,
+      "options": {
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.1.5",
+      "repeat": null,
+      "repeatIteration": 1599510110417,
+      "repeatPanelId": 16,
+      "scopedVars": {
+        "county": {
+          "selected": true,
+          "text": "Sacramento County, CA",
+          "value": "Sacramento County, CA"
+        }
+      },
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "county",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  collected AS \"time\",\n  county AS metric,\n  weekly_cases_per_100k / 7\nFROM stats\nWHERE\n  $__timeFilter(collected) AND\n  county IN ($county)\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": ["weekly_cases_per_100k"],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "stats",
+          "timeColumn": "collected",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": ["county", "IN", "($county)"],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "$county",
+      "type": "gauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "decimals": 1,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
+      "hiddenSeries": false,
+      "id": 2,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pluginVersion": "7.1.5",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "county",
+          "rawQuery": true,
+          "rawSql": "SELECT\n  collected AS \"time\",\n  county AS metric,\n  weekly_cases_per_100k / 7\nFROM stats\nWHERE\n  $__timeFilter(collected) AND\n  county IN ($county)\nORDER BY 1,2",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": ["weekly_cases_per_100k"],
+                "type": "column"
+              }
+            ]
+          ],
+          "table": "stats",
+          "timeColumn": "collected",
+          "timeColumnType": "timestamp",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            },
+            {
+              "datatype": "text",
+              "name": "",
+              "params": ["county", "IN", "($county)"],
+              "type": "expression"
+            }
+          ]
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "custom",
+          "fill": false,
+          "fillColor": "rgba(51, 162, 229, 0.2)",
+          "line": true,
+          "lineColor": "#B877D9",
+          "op": "gt",
+          "value": 7,
+          "yaxis": "left"
+        },
+        {
+          "colorMode": "custom",
+          "fill": false,
+          "fillColor": "rgba(51, 162, 229, 0.2)",
+          "line": true,
+          "lineColor": "#F2495C",
+          "op": "gt",
+          "value": 4,
+          "yaxis": "left"
+        },
+        {
+          "colorMode": "custom",
+          "fill": false,
+          "fillColor": "rgba(51, 162, 229, 0.2)",
+          "line": true,
+          "lineColor": "#FF9830",
+          "op": "gt",
+          "value": 1,
+          "yaxis": "left"
+        }
+      ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
@@ -116,11 +549,11 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "none",
           "label": null,
           "logBase": 1,
           "max": null,
-          "min": null,
+          "min": "0",
           "show": true
         },
         {
@@ -149,8 +582,18 @@
         "current": {
           "selected": true,
           "tags": [],
-          "text": ["Orange County, CA", "Contra Costa County, CA"],
-          "value": ["Orange County, CA", "Contra Costa County, CA"]
+          "text": [
+            "Contra Costa County, CA",
+            "King County, WA",
+            "Orange County, CA",
+            "Sacramento County, CA"
+          ],
+          "value": [
+            "Contra Costa County, CA",
+            "King County, WA",
+            "Orange County, CA",
+            "Sacramento County, CA"
+          ]
         },
         "datasource": "coronawatch",
         "definition": "select county from cases_per_100k;",
@@ -7676,7 +8119,7 @@
             "value": "King County, TX"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "King County, WA",
             "value": "King County, WA"
           },
@@ -12586,7 +13029,7 @@
             "value": "Sac County, IA"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "Sacramento County, CA",
             "value": "Sacramento County, CA"
           },
@@ -15890,7 +16333,7 @@
     ]
   },
   "time": {
-    "from": "now-30d",
+    "from": "2020-03-01T08:00:00.000Z",
     "to": "now"
   },
   "timepicker": {
@@ -15910,5 +16353,5 @@
   "timezone": "",
   "title": "COVID",
   "uid": "hBWvTAvGz",
-  "version": 2
+  "version": 15
 }

@@ -1,0 +1,10 @@
+datasources:
+- name: coronawatch
+  uid: coronawatch
+  access: proxy
+  type: PostgreSQL
+  url: http://172.17.0.1:5432
+  password: covid19
+  user: coronawatch
+  database: coronawatch
+  isDefault: true
